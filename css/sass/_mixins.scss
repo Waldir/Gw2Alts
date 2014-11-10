@@ -1,0 +1,157 @@
+// Font Size
+@mixin font-size( $size: 12 ){
+  font-size: $size + px; //fallback for old browsers
+  font-size: ( $size / 16 )+rem;
+}
+
+// Line Height
+@mixin line-height($heightValue: 12 ){
+  line-height: $heightValue + px; //fallback for old browsers
+  line-height: ( $heightValue / 16 ) rem;
+}
+
+// background size
+@mixin background-size( $val ){
+  -webkit-background-size: $val;
+  -moz-background-size: $val;
+  -o-background-size: $val;
+  background-size: $val; }
+
+// Scale
+@mixin Scale( $newSize, $origin: 50% ){
+  //$percent: percentage( $newSize );
+         -webkit-transform: scale( $newSize );
+            -moz-transform: scale( $newSize );
+              -o-transform: scale( $newSize );
+             -ms-transform: scale( $newSize );
+                 transform: scale( $newSize );
+  -webkit-transform-origin: $origin $origin;
+     -moz-transform-origin: $origin $origin;
+      -ms-transform-origin: $origin $origin;
+       -o-transform-origin: $origin $origin;
+          transform-origin: $origin $origin;
+}
+// Border Radious.
+@mixin border-radius( $radius )
+{
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin border-radius-plus( $tl:0, $tr:0, $bl:0, $br:0 )
+{
+  -webkit-border-top-left-radius: $tl;
+  -webkit-border-top-right-radius: $tr;
+  -webkit-border-bottom-right-radius: $br;
+  -webkit-border-bottom-left-radius: $bl;
+
+  -moz-border-radius-topleft: $tl;
+  -moz-border-radius-topright: $tr;
+  -moz-border-radius-bottomright: $br;
+  -moz-border-radius-bottomleft: $bl;
+
+  -ms-border-radius-topleft: $tl;
+  -ms-border-radius-topright: $tr;
+  -ms-border-radius-bottomright: $br;
+  -ms-border-radius-bottomleft: $bl;
+
+  -o-border-radius-topleft: $tl;
+  -o-border-radius-topright: $tr;
+  -o-border-radius-bottomright: $br;
+  -o-border-radius-bottomleft: $bl;
+
+  border-top-left-radius: $tl;
+  border-top-right-radius: $tr;
+  border-bottom-right-radius: $br;
+  border-bottom-left-radius: $bl;
+}
+
+// Transition
+@mixin transition ( $time )
+{
+          transition: $time;
+       -o-transition: $time;
+      -ms-transition: $time;
+     -moz-transition: $time;
+  -webkit-transition: $time;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+       -moz-box-shadow:inset $top $left $blur $color;
+        -ms-box-shadow:inset $top $left $blur $color;
+         -o-box-shadow:inset $top $left $blur $color;
+            box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+       -moz-box-shadow: $top $left $blur $color;
+        -ms-box-shadow: $top $left $blur $color;
+         -o-box-shadow: $top $left $blur $color;
+            box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin box-sizing ( $val: border-box )
+{ 
+  -webkit-box-sizing: $val; /* Safari/Chrome, other WebKit */
+     -moz-box-sizing: $val; /* Firefox, other Gecko */
+          box-sizing: $val; /* Opera/IE 8+ */
+}
+
+@mixin opacity( $value ) 
+{
+  $percent: $value * 100;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$percent})";
+  filter: alpha(opacity=$percent);
+  -moz-opacity: $value;
+  -khtml-opacity: $value;
+  opacity: $value;
+}
+
+@mixin text-shadow( $x, $y, $blur, $color ){
+  text-shadow: $x $y $blur $color;
+}
+
+@mixin background-clip( $value ){
+  // border, padding, content
+  -webkit-background-clip: $value;  /* Safari 4? Chrome 6? */
+     -moz-background-clip: $value;     /* Firefox 3.6 */
+          background-clip: #{$value}-box;   /* Firefox 4, Safari 5, Opera 10, IE 9 */
+}
+
+// Transparent
+@mixin transparent($color, $alpha) {
+  $rgba: rgba($color, $alpha);
+  $ie-hex-str: ie-hex-str($rgba);
+  background-color: transparent;
+  background-color: $rgba;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+  zoom: 1;
+}
+
+// gradient
+@mixin gradient( $start-color:#fff, $start-alpha:1, $end-color:#000, $end-alpha:0, $from:left, $to:right, $distance: 100% ){
+  $start-rgba: rgba($start-color, $start-alpha);
+  $end-rgba:   rgba($end-color, $end-alpha);
+  
+  $start-ie-hex-str: ie-hex-str($start-rgba);
+  $end-ie-hex-str:   ie-hex-str($end-rgba);
+  /* FF3.6+ */
+  background: -moz-linear-gradient($from, $start-rgba 0%, $end-rgba $distance);
+   /* Chrome,Safari4+ */
+  background: -webkit-gradient(linear, $from top, $to top, color-stop(0%, $start-rgba), color-stop($distance, $end-rgba));
+  /* Chrome10+,Safari5.1+ */ 
+  background: -webkit-linear-gradient($from, $start-rgba 0%, $end-rgba $distance);
+  /* Opera 11.10+ */
+  background: -o-linear-gradient($from, $start-rgba 0%, $end-rgba $distance);
+  /* IE10+ */
+  background: -ms-linear-gradient($from, $start-rgba 0%, $end-rgba $distance); 
+  /* W3C */
+  background: linear-gradient(to $to, $start-rgba 0%, $end-rgba $distance);
+   /* IE6-9 */ 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$start-ie-hex-str}', endColorstr='#{$end-ie-hex-str}}',GradientType=1 );
+}

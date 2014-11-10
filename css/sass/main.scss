@@ -1,0 +1,908 @@
+// Use Compass ('cause it rocks!)
+// G:/xampp\htdocs/gw2alts/css
+@import "_base";
+@import "_mixins";
+
+// Place holders
+%white-text { color: #fff; }
+%vertical-middle { vertical-align: middle; }
+%link-fade{ @include transition(.5s); text-decoration: none; }
+
+%text-pop { @include text-shadow( 1px, 1px, 0px, #000 ); }
+%text-indent{ text-indent: -1999px; }
+%hide-overflow { overflow: hidden; }
+%inline-block { display: inline-block; }
+%block { display: block; }
+%max-width { width: 100%; }
+%content-width {  
+  max-width: $content-width;
+  width: 100%;
+  @media only screen and (max-width: $content-width)  { width: 100%; }
+}
+%icons {
+  background: url($icons) no-repeat;
+  @extend %text-indent;
+  @extend %hide-overflow;
+  @extend %inline-block;
+}
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both; } }
+
+// Place holder for hovers of icons
+%icon-hover{
+  @include Scale( 1.5 );
+  border: 3px outset;
+  @include border-radius( 50% );
+  @include box-shadow( 2px, 2px, 0, #000 ); }
+
+
+/* Set all elements to 0 margin and padding */
+/* apply a natural box layout model to all elements, but allowing components to change */
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  @include box-sizing( inherit );
+}
+
+/* tell the browser to render HTML 5 elements as block */
+article, aside, figure, footer, header, hgroup, nav, section { 
+  @extend %block;
+}
+
+/* Set html to 100% height */
+html, body 
+{ 
+  height: 100%;
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  color:  $base-font-color;
+  @include font-size( $base-font-size );
+  //@include line-height( $base-line-height );
+  @extend %white-text;
+  @include box-sizing();
+}
+
+@import "_topNav";
+
+body{
+  background: $body-color;
+}
+
+h2{
+  font-variant: small-caps;
+  font-weight: normal;
+}
+
+h6 {
+  @extend %max-width;
+  display: block;
+  padding: 5px;
+  @include font-size( 18 );
+  font-weight: normal;
+  font-variant: small-caps;
+  color: $tbl-header-color;
+
+  &:after 
+  {
+    content: "";
+    display: block;
+    background: $tbl-header-color; 
+
+    width: 100%; 
+    height: 1px;
+    margin: 3px 0 5px 0;
+    border: none; 
+  }
+}
+
+hr
+{
+  background: #ddd; 
+  clear: both; 
+  float: none; 
+  width: 100%; 
+  height: 1px;
+  margin: 0 0 1.4em;
+  border: none; 
+}
+
+fieldset 
+{ 
+  border:1px solid $tbl-header-color;
+  padding: 0.5em; 
+  @include border-radius( 5px ); 
+}
+
+legend {
+  padding: 0.2em 0.5em;
+  color: $tbl-header-color;
+  border: 1px solid $tbl-header-color;
+  margin-left: 20px;
+  }
+
+// header
+header
+{
+  position: relative;
+  color: #000;
+  @extend %max-width;
+  @include gradient( $header-color, 1, #fff, 0, bottom, top );
+  background: url($header-bg) no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+
+  .container
+  {
+    height: 300px;
+    margin: 25px  auto 0 auto;
+    padding-top: 100px;
+    background: url($header-art) no-repeat;
+    background-position: top right;
+    @extend %content-width;
+  }
+
+  .title-text{
+    
+    @include transparent( rgb(30, 37, 46), .83 );
+    color: #fff;
+    padding: 25px 25px 25px 33px;
+    text-align: center;
+    position: relative;
+    left: 40px;
+    width: 40%;
+
+  h1{
+
+    font-family: 'Gnuolane',arial,helvetica;
+    @include font-size( 45 );
+    font-weight: normal;
+    letter-spacing: -2px; ; }
+
+  h2{
+    font-family: "Lucida Grande", Tahoma;
+     @include font-size( 15 );
+    font-weight: lighter;
+    font-variant: normal;
+    text-transform: uppercase;
+    letter-spacing: 5px; }
+  }
+}
+
+// footer
+footer {
+  background: url($footer-bg) repeat 50% 50%;
+  @extend %max-width;
+  padding: 20px 0 0 0;
+  color: #fff;
+  position:relative;
+  bottom:0;
+  #footer-content {
+    margin: 20px auto;
+    @extend %content-width; }  }
+
+  #footer-after{
+    background: $footer-color;
+    color: $footer-font-color;
+    padding: 30px;
+    text-align: center;
+  }
+
+.anet-logo {
+  width: 111px;
+  height: 44px;
+  background: url($anet-logo) no-repeat 0 0;
+  @extend %block;
+}
+
+.ncsoft-logo {
+  width: 111px;
+  height: 44px;
+  background: url($ncsoft-logo) no-repeat 0 50%;
+  @extend %block;
+}
+.gw2-logo {
+  width: 111px;
+  height: 44px;
+  background: url($gw2-logo) no-repeat 0 50%;
+  @extend %block;
+}
+
+label 
+{
+  @extend %inline-block;
+  text-align: right;
+  padding-right: 5px;
+  width: 33%;
+}
+// Pre footer section
+section#pre-footer{
+  @extend %max-width;
+  background: $header-color;
+  background-position: 50% 100%;
+  
+  border: solid #0c98cf;
+  border-width: 1px 0;
+  .container{
+    background: url($pre-footer-bg) no-repeat;
+    margin: 0 auto;
+    padding: 1.6%;
+    min-height: 300px;
+    @extend %content-width;
+    }
+} 
+
+// Alst section
+section#Alsts-content{
+  @extend %max-width;
+  border-bottom: 1px solid $tbl-header-color;
+
+  .container{
+    margin: 0 auto;
+    @extend %text-pop; 
+    @extend %content-width; }
+}
+
+a#TipsBox {
+  margin: 0 5px;
+  width: 100px;
+  @extend %inline-block;
+  background: $tbl-header-color;
+  padding:  2px 5px;
+  font-weight: bold;
+  text-align: center;
+  color: #505739;
+  @include border-radius( 10px );
+  @extend %vertical-middle; 
+  @include text-shadow( 0px, 1px, 0px, #fff ); 
+
+  &:active {
+    position: relative;
+    top: 1px; }
+}
+
+#ShowBox_TipsBox {
+  padding: 30px;
+  display: none;
+  @extend %content-width;
+  margin: 0 auto;}
+
+blockquote {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  width: 80%;
+  margin: 0.25em auto;
+  padding: 0.25em 40px;
+  line-height: 1.45;
+  position: relative;
+  color: #383838;
+
+  &:before {
+    display: block;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    color: #7a7a7a; }
+  &:after {
+    display: block;
+    content: "\201d";
+    font-size: 80px;
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    color: #7a7a7a; }
+
+  cite {
+    color: #999999;
+    font-size: 14px;
+    display: block;
+    margin-top: 5px; 
+    text-align: right;
+    &:before {
+    content: "\2014 \2009"; }
+  }
+}
+
+
+
+.alt-face-container {
+  position:relative;
+  margin: 5px;
+
+  img.alt-face {
+    @include border-radius-plus( 30%, 0, 0, 30% );
+    width:  60px;
+    height: 60px; }
+
+  .lvl  { position:absolute; right: 0px; bottom: 0px; }
+  .icon { position:absolute; left:  0px; top: 0px; }
+}
+
+.alt-box {
+  margin: 10px 0px 10px 10px ;
+  text-align: center;
+  position: relative;
+  @extend %block;
+  border: 0px solid $link;
+  @include transparent( $link, 0.35 );
+
+  .alt-info{ 
+    padding: 2px 0px;
+    @include transparent( #000, 0.25 ); }
+}
+
+.content-box {
+  @include transparent(#fff, .99);
+  padding: 2.6%;
+  margin: 1%;
+  @include border-radius( 10px );
+  @include box-shadow(1px, 2px, 4px, #ccc);
+}
+
+.hr2
+{
+  margin: 2px 0;
+  background: url($hr2) no-repeat;
+  background-position: center;
+  height: 2px;
+  border: 0px;
+  @extend %block;
+}
+
+.vr
+{
+  background: url($vrs) no-repeat;
+  margin: 0 3px;
+  @extend %inline-block;
+  height: 25px;
+  width: 2px;
+  @extend %vertical-middle;
+  @include box-shadow(1px, 1px, 2px, $shadow-color);
+}
+
+/*  SECTIONS  */
+.section { clear: both; }
+
+/*  COLUMN SETUP  */
+.col {
+  @extend %block;
+  float:left;
+  margin: 1% 0 1% 1.6%; }
+
+.col:first-child { margin-left: 0; }
+
+/*  GROUPING  */
+.group:before{ content:""; display: table; }
+.group{ 
+  zoom:1; 
+  @extend %clearfix; } /* For IE 6/7 */
+
+.span_1_of_2  { width: 49.2%; }
+
+.span_1_of_3  { width: 32.26%; }
+.span_2_of_3  { width: 66.13%; }
+
+.span_1_of_4  { width: 23.8%; }
+.span_1_of_5  { width: 18.72%; }
+.span_1_of_6  { width: 15.33%; }
+.span_1_of_7  { width: 12.91%; }
+.span_1_of_8  { width: 11.1%; }
+.span_1_of_9  { width: 9.68%; }
+.span_1_of_10 { width: 8.56%; }
+.span_1_of_11 { width: 7.63%; }
+.span_1_of_12 { width: 6.86%; }
+
+.span_5_of_8 { width: 61.9%; }
+.span_4_of_8 { width: 49.2%;  }
+
+#wrapper{
+  min-height:100%;
+  position:relative;
+  background: $content-color;
+}
+
+main
+{
+  @include gradient( $footer-color, .20, $content-color, 0, top, bottom, 100px );
+  @extend %max-width;
+  padding-top: 1.6%;
+
+  .container
+  {
+    margin: 0 auto;
+    @extend %content-width;
+    min-height: 100px;
+
+  }
+}
+
+.popbox {
+  display: none;
+  position: absolute;
+  z-index: 99999;
+  max-width: 400px;
+  padding: 5px;
+  background: url( $tooltip-bg );
+  @extend %white-text;
+  border:1px solid black;
+  margin: 0px;
+  @include box-shadow(1px, 1px, 0, rgba(255, 255, 255, .15), true);
+  @extend %text-pop
+}
+
+/* Rarity */
+.Masterwork , .Fine, .Exotic , .Rare, .Common, .Basic, .Ascended , .Legendary, .Junk, .Flavor
+{
+  @extend %text-pop
+}
+
+// infusion slot
+.Infusion-Slot {
+  @extend %vertical-middle;
+  @extend %icons;
+  width: 15px;
+  height: 15x;
+  background-position: -78px 0;
+}
+
+// Money 
+.Gw2Money {
+  width: 15px;
+  height: 15px;
+  @extend %vertical-middle;
+  @extend %icons;
+}
+
+.Gw2Money-Gold {
+  background-position: -27px 0;
+  @extend .Gw2Money;
+}
+
+.Gw2Money-Copper {
+  background-position: -61px 0;
+  @extend .Gw2Money;
+}
+
+.Gw2Money-Silver {
+  background-position: -44px 0;
+  @extend .Gw2Money;
+}
+
+// money color
+.Money-Silver { color: $money-silver-color; }
+.Money-Copper { color: $money-copper-color; }
+.Money-Gold   { color: $money-gold-color; }
+
+// rarity border colors
+.Ascended_b{ 
+  border: 1px solid $ascended;
+  @extend %vertical-middle; 
+  @extend %link-fade;
+  &:hover { @extend %icon-hover; border-color: $ascended; } }
+.Common_b, .Basic_b{ 
+  border: 1px solid $common;
+  @extend %vertical-middle; 
+  @extend %link-fade;
+  &:hover{ @extend %icon-hover; border-color: $common; } }
+.Exotic_b{ 
+  border: 1px solid $exotic;
+  @extend %vertical-middle; 
+  @extend %link-fade;
+  &:hover{ @extend %icon-hover; border-color: $exotic; } }
+.Fine_b{ 
+  border: 1px solid $fine;       
+  @extend %vertical-middle;
+  @extend %link-fade;
+  &:hover{ @extend %icon-hover; border-color: $fine; } }
+.Legendary_b{ 
+  border: 1px solid $legendary;  
+  @extend %vertical-middle; 
+  @extend %link-fade;
+  &:hover{ @extend %icon-hover; border-color: $legendary; } }
+.Junk_b{ 
+  border: 1px solid $junk;      
+  @extend %vertical-middle; 
+  @extend %link-fade;
+  &:hover{ @extend %icon-hover; border-color: $junk; } }
+.Rare_b             { 
+  border: 1px solid $rare;       
+  @extend %vertical-middle; 
+  @extend %link-fade;
+  &:hover{ @extend %icon-hover; border-color: $rare; } }
+.Masterwork_b{ 
+  border: 1px solid $masterwork; 
+  @extend %vertical-middle; 
+  @extend %link-fade;
+  &:hover{ @extend %icon-hover; border-color: $masterwork; } }
+
+// Profession border colors
+.Elementalist_b{ 
+  border: 2px solid $Elementalist-color;  
+  @extend %vertical-middle;
+  @extend %link-fade;
+  &:hover { @extend %icon-hover; border-color: $Elementalist-color; } }
+.Engineer_b{ 
+  border: 2px solid $Engineer-color;
+  @extend %vertical-middle;
+  @extend %link-fade;
+  &:hover { @extend %icon-hover; border-color: $Engineer-color; } }
+
+.Guardian_b{ 
+  border: 2px solid $Guardian-color;
+  @extend %vertical-middle;
+  @extend %link-fade;
+  &:hover { @extend %icon-hover; border-color: $Guardian-color; } }
+
+.Mesmer_b{ 
+  border: 2px solid $Mesmer-color;
+  @extend %vertical-middle;
+  @extend %link-fade;
+  &:hover { @extend %icon-hover; border-color: $Mesmer-color; } }
+
+.Necromancer_b{ 
+  border: 2px solid $Necromancer-color;
+  @extend %vertical-middle;
+  @extend %link-fade;
+  &:hover { @extend %icon-hover; border-color: $Necromancer-color; } }
+
+.Ranger_b{ 
+  border: 2px solid $Ranger-color;
+  @extend %vertical-middle;
+  @extend %link-fade;
+  &:hover { @extend %icon-hover; border-color: $Ranger-color; } }
+
+.Thief_b{ 
+  border: 2px solid $Thief-color;
+  @extend %vertical-middle;
+  @extend %link-fade;
+  &:hover { @extend %icon-hover; border-color: $Thief-color; } }
+
+.Warrior_b{ 
+  border: 2px solid $Warrior-color;
+  @extend %vertical-middle;
+  @extend %link-fade;
+  &:hover { @extend %icon-hover; border-color: $Warrior-color; } }
+
+// Rarity colors.
+.Masterwork     { color: $masterwork; }
+.Fine           { color: $fine; }
+.Exotic         { color: $exotic; }
+.Rare           { color: $rare; }
+.Common, .Basic { color: $common; }
+.Ascended       { color: $ascended; }
+.Legendary      { color: $legendary; }
+.Junk           { color: $junk; }
+.Flavor         { color: $flavor; }
+
+// Icons
+img.item-icon-tooltip {
+  border: 1px outset;
+  width: 32px;
+  height: 32px;
+ @extend %vertical-middle;
+}
+
+.Mesmer-icon{
+  @extend %icons;
+  width:    26px;
+  height:   22px;
+  background-position: -26px -15px; }
+.Elementalist-icon{
+  @extend %icons;
+  width:    26px;
+  height:   26px;
+  background-position: -26px -36px; }
+
+.Ranger-icon{
+  @extend %icons;
+  width:    26px;
+  height:   27px;
+  background-position: -26px -62px; }
+
+.Warrior-icon{
+  @extend %icons;
+  width:    28px;
+  height:   22px;
+  background-position: -26px -88px; }
+
+.Necromancer-icon{
+  @extend %icons;
+  width:    26px;
+  height:   26px;
+  background-position: -26px -108px; }
+
+.Guardian-icon{
+  @extend %icons;
+  width:    26px;
+  height:   26px;
+  background-position: -26px -133px; }
+
+.Engineer-icon{
+  @extend %icons;
+  width:    26px;
+  height:   26px;
+  background-position: -26px -158px; }
+
+.Thief-icon{
+  @extend %icons;
+  width:    26px;
+  height:   26px;
+  background-position: -26px -183px; }
+
+.item_title {
+  @extend %inline-block;
+  margin-bottom: 15px;
+  margin-left: 5px;
+}
+
+img.rune_img {
+ @include border-radius-plus( 90%, 90%, 100%, 90% )
+}
+
+// Line break
+p.br 
+{
+  content: '&nbsp;'; 
+  @extend %block;
+  @extend %text-indent;
+}
+
+// Loading icon
+.loading-icon
+{
+  @extend %inline-block;
+  width:    24px;
+  height:   24px;
+  @extend %text-indent;
+  @extend %hide-overflow;
+  margin-right: 3px;
+  background: url($loading-icon);
+}
+
+/* Return msg box */
+#message_box 
+{
+  display:        none;
+  border:         1px solid #000;
+  @include border-radius-plus( 0, 0, 10px, 10px );
+  background:     url($msg-bg);
+  @extend %white-text;
+  position:       absolute;
+  margin-top:     0;
+  left:           50%;
+  z-index:        10000000; 
+  padding:        5px;
+  text-align:     center; 
+  width:          600px;
+  margin-left:    -300px;
+}
+
+/* Error & Succes Text */
+#message_box_msg {
+  margin: 15px 0;
+  @include font-size( 14 );
+  @extend %text-pop
+}
+
+// placeholder 
+%error-success 
+{
+  @include font-size( 30 );
+  font-variant: small-caps;
+  margin-top: 15px;
+  @include text-shadow( 0, 0, 3px, #000 );
+}
+
+.success
+{ 
+  @extend %error-success;
+  color: $success-color; 
+}
+.error
+{ 
+  @extend %error-success;
+  color: $error-color;
+}
+
+.error_msg {
+  color: $error-color;
+}
+.errorHighlight { 
+  border: 2px solid #CC0000; 
+}
+/* CSS Table*/
+.table {
+    display: block;  
+    @extend %max-width; }
+
+.tbl-row {
+  @extend %max-width;
+  display: block;
+  padding: 5px;
+  margin-bottom: 2px;
+  //border-bottom: 1px solid rgb(0, 0, 0); // fallback
+  //border-bottom: 1px solid rgba(255, 255, 255, .05);
+  @include background-clip( padding );
+  @include transition( 0.5s );
+  @include border-radius( 5px );
+  &:hover{ @include gradient( $tbl-row-hover-color, .65, #000, 0 ) } }
+
+.tbl-cell{ display: inline-block; }
+
+.tbl-row-light { @include transparent( #000, 0.15 ); }
+.tbl-row-dark  { @include transparent( #000, 0.25 ); }
+
+.tbl-row-gradient-light { @include gradient( #000, .25, #000, 0 ) };
+.tbl-row-gradient-dark  { @include gradient( #000, .50, #000, 0 ) };
+
+.small_arrow_down 
+{
+  @include triangle(12px, #999999, down);
+  @extend %inline-block;
+}
+.small_arrow_up
+{
+  @include triangle(12px, #999999, up);
+  @extend %inline-block;
+}
+
+/*Imput Style*/
+input[type=text], 
+input[type=password],
+select  {
+  margin: 3px;
+  @include transparent(#000, .10);
+  color: $input-txt-color;
+  border: 1px solid #000; 
+  height: 25px; 
+  @include font-size( 12 );
+  padding-left: 4px;
+  @include border-radius( 6px );
+} 
+ 
+input[type=text]:focus, 
+input[type=password]:focus,
+select:focus
+{ 
+  outline: none; 
+  @include box-shadow( 0, 0, 8px, $btn-bg-color );
+} 
+option { 
+    /* Whatever color  you want */
+    background-color: $header-color;
+}
+input[type=submit],
+.Pagination a:link, 
+.Pagination a:visited, 
+.Pagination .noneLink,
+button, 
+#close_message, 
+a.button:link, 
+a.button:visited
+{
+  color: #000;
+  margin: 0 3px;
+  padding: 2px 10px;
+  border: 1px solid #000;
+  background: $btn-bg-color url( $submit-bg ); 
+  background-position: 200% 200%;
+  background-repeat: no-repeat;
+  @include border-radius( 4px );
+  @include box-shadow( 0, 1px, 1px, #000 );
+  @include transition( 0.2s );
+}
+
+input[type=submit]:hover, 
+.Pagination a:hover,
+a.button:hover,
+button:hover
+{
+  background-position: top right; 
+}
+
+/* Pagination */
+.Pagination 
+{
+  margin:         2%;
+  text-align:     right;
+}
+
+.Pagination .noneLink 
+{
+ @include opacity( 0.5 ) 
+}
+
+/* Links */
+a, a:link , a:visited , a:active { @extend %link-fade; }
+a, a:link , a:visited , a:active { color: $link; }
+
+a.Masterwork:link, a.Masterwork:visited, a.Masterwork:active{ @extend .Masterwork; }
+a.Fine:link,       a.Fine:visited,       a.Fine:active      { @extend .Fine;       }
+a.Exotic:link,     a.Exotic:visited,     a.Exotic:active    { @extend .Exotic;     } 
+a.Rare:link,       a.Rare:visited,       a.Rare:active      { @extend .Rare;       }
+a.Common:link,     a.Common:visited,     a.Common:active    { @extend .Common;     }
+a.Basic:link,      a.Basic:visited,      a.Basic:active     { @extend .Common;     }
+a.Ascended:link,   a.Ascended:visited,   a.Ascended:active  { @extend .Ascended;   }
+a.Legendary:link,  a.Legendary:visited,  a.Legendary:active { @extend .Legendary;  } 
+a.Junk:link,       a.Junk:visited,       a.Junk:active      { @extend .Junk;       } 
+
+a:hover, 
+a.Masterwork:hover,
+a.Fine:hover,
+a.Exotic:hover,
+a.Rare:hover,
+a.Common:hover,
+a.Basic:hover,
+a.Ascended:hover,
+a.Legendary:hover,
+a.Junk:hover { color: $link-hover; } 
+
+/****************************************
+  Scroll to top button
+*****************************************/
+.scrollTop {
+  display: none;
+  z-index: 10000;
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  right: 10px; 
+  bottom: 10px;
+  text-align: center;
+  @include transparent( #000, .50 );
+  @include border-radius( 50% ); 
+
+  a {
+    font-weight: bold;
+    position: relative;
+    top: 25%;
+    margin: auto;
+    height: 40px;
+    @include font-size( 20 );
+    color:#fff; }
+}
+
+
+@media only screen and (max-width: 1100px) 
+{
+.span_1_of_3  {width: 49.2%; }
+.col { margin: 1% 0 1% 0%; }
+}
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+@media only screen and (max-width: 480px) {
+  %change-elemts { margin: 0; max-width: 100% }
+  #navigation    { @extend %change-elemts; }
+  #header        { @extend %change-elemts; }
+  #footer        { @extend %change-elemts; }
+  .col, { margin: 1% 0 1% 0%; }
+.span_1_of_2  { width: 100%; }
+.span_1_of_3  { width: 100%; }
+.span_1_of_4  { width: 100%; }
+.span_1_of_5  { width: 100%; }
+.span_1_of_6  { width: 100%; }
+.span_1_of_7  { width: 100%; }
+.span_1_of_8  { width: 100%; }
+.span_1_of_9  { width: 100%; }
+.span_1_of_10 { width: 100%; }
+.span_1_of_11 { width: 100%; }
+.span_1_of_12 { width: 100%; }
+
+  .content-container { width: 100%; }
+  #Alts-Side-container { width: 100%; }
+  input[type=text], select { margin: 1.6%; width: 95% }
+
+  .col_one { width: 100%; }
+  .col_two, .col_tres, .col_four, .toHide, .vr{ display: none; }
+
+  #topNav { position: relative;}
+}

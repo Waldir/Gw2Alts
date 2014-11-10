@@ -1,0 +1,90 @@
+// Use Compass ('cause it rocks!)
+@import "compass";
+@import 'C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/bourbon-4.0.2/dist/bourbon'; 
+
+// Rarity colors.
+$masterwork:          #2dc50e;
+$fine:                #4f9dfe;
+$exotic:              #fda500;
+$rare:                #ffe51f;
+$common:              #fff;
+$ascended:            #ff4488;
+$legendary:           #a02ef7;
+$junk:                #959c9c;
+$flavor:              #87bab5;
+// Profession colors
+$Elementalist-color: #d80144;
+$Engineer-color:     #b18500;
+$Guardian-color:     #0068c6;
+$Mesmer-color:       #b800aa;
+$Necromancer-color:  #68c500;
+$Ranger-color:       #89a900;
+$Thief-color:        #db2700;
+$Warrior-color:      #cb5900;
+// other colors
+$error-color:         #da343b;
+$shadow-color:        #252525;
+$tbl-header-color:    #a7a7a7;
+$tbl-header-l-color:  #fdf4af;
+$tbl-row-hover-color: #5D4627;
+$btn-bg-color:        #c1ba95;
+$input-txt-color:     #333333;
+$body-color:          #fff;
+$header-color:        #f5f5f5;
+$footer-color:        #333333;
+$content-color:       #f5f5f5;
+$success-color:       #a6e22e;
+// Link colors
+$link:                #000;
+$link-hover:          #bfbfbf;
+
+$link-menu:           #bfbfbf;
+$link-meu-hover:      #0aadb4;
+// money
+$money-gold-color:    #f8ae22;
+$money-copper-color:  #d86e1b;
+$money-silver-color:  #adb6b6;
+
+
+// Base Font
+$base-font-family: "Verdana", "Helvetica", "monospace";
+$base-font-weight: normal;
+$base-font-size:   14;
+$base-line-height: 14;
+$base-font-color:  #333333;
+$footer-font-color:#555555;
+
+// Images
+$icons:        '../images/icons/icons.png';
+$hr:           '../images/hr.png';
+$hr2:          '../images/hr2.png';
+$vrs:          '../images/vrs.png';
+$tooltip-bg:   '../images/bg_tooltip_.png';
+$msg-bg:       '../images/bg/msg_bg.png';
+$submit-bg:    '../images/bg/submit_bg.png';
+$topmenu-bg:   '../images/bg/top-menu-bg.png';
+$body-bg:      '../images/bg/body_bg.jpg';
+$content-bg:   '../images/bg/content-bg.jpg';
+$money-gold:   '../images/icons/gold.png';
+$money-copper: '../images/icons/copper.png';
+$money-silver: '../images/icons/silver.png';
+$infusion-slot:'../images/icons/infusion_slot.png';
+$settings-icon:'../images/icons/settings.png';
+$user-icon:    '../images/icons/user.png';
+$loading-icon: '../images/icons/loading.gif';
+$side-top-bg:  '../images/bg/side_top.png';
+$section-bg:   '../images/bg/section_bg.jpg';
+$header-art:    '../images/bg/header-art.png';
+$header-bg:    '../images/bg/header_bg.jpg';
+$footer-bg:    '../images/bg/footer-bg.jpg';
+$pre-footer-bg:'../images/bg/pre-footer-bg.png';
+$anet-logo:    '../images/icons/anet-logo.png';
+$ncsoft-logo:  '../images/icons/ncsoft-logo.png';
+$gw2-logo:     '../images/icons/gw2-logo.png';
+$nav-bg:       '../images/bg/nav-bg.png';
+$nav-bg-side:  '../images/bg/nav-bg-side.png';
+
+// widths
+$content-width: 1100px;
+
+

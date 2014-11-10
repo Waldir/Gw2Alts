@@ -1,0 +1,163 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
+
+#topNavMenu 
+{
+  z-index: 100;
+  @extend %content-width;
+  position: fixed;
+  top: 0; 
+  height: 50px;
+  background: url($nav-bg) left top no-repeat;
+
+  &:before{
+    content: "";
+    position: absolute; 
+    top: 0;
+    left: -500%;
+    width: 500%;
+    height: 50px;
+    background: url($nav-bg-side) top repeat-x;
+  }
+
+  &:after{
+    content: "";
+    position: absolute; 
+    top: 0;
+    right: -500%;
+    width: 500%;
+    height: 50px;
+    background: url($nav-bg-side) top repeat-x;
+  }
+
+  ul 
+  {
+    list-style: none;
+    line-height: 20px;
+    zoom: 1;
+    
+    li.right 
+    { 
+      float: right; 
+      margin: 10px 0 0 5px;
+    }
+
+    li
+    {
+      @extend %inline-block;
+      position: relative;
+
+      .NavIcon
+      {
+        @extend %icons;
+        width:    26px;
+        height:   26px;
+        cursor: pointer;
+        @include opacity(0.50);
+
+        &.settings{ background-position: 0 -26px;}
+        &.user    { background-position: 0 -52px;}
+        &.alts    { background-position: 0 0;}
+        &.sleep   { background-position: 0 -77px;}
+
+        &:hover
+        {
+          @include opacity(.70);
+          @include transition(.1s);
+        }
+        &:active {
+            position: relative;
+            top: 1px; }
+      }
+
+        a.left
+        {
+          overflow: hidden;
+          color: $link-menu;
+          text-decoration: none;
+          display: block;
+          padding: 10px 15px;
+          font-family: 'Open Sans', sans-serif;
+          font-weight: 700;
+          text-transform: uppercase;
+          @include font-size( 15 );
+          position: relative;
+          @include transition( 0.5s );
+
+          &:before 
+          {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 2px;
+            width: 0;
+            background: $link;
+            @include transition( 0.5s );
+          }
+          &:after
+          {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 50%;
+            top: -10px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid $link;
+            margin-left: -10px;
+            @include transition( 0.5s );
+          }
+
+          &:active {
+            position: relative;
+            top: 1px; }
+            
+          &:hover, &.active
+          { 
+            color: $link-meu-hover;
+            //background: $header-color;
+            &:before {  width: 100%; }
+            //&:after { top: 0; }
+          }
+        }
+    }
+  }
+}
+
+#User-Menu, #Alts-Menu, #Settings-Menu 
+{
+  display: none;
+
+  right: 0;
+  z-index: 9999999; 
+  width: 350px;
+  text-align: left;
+  position: absolute;
+  background: $content-color; 
+  padding: 10px;
+  border: 8px solid rgba(0, 0, 0, .15);
+  @include background-clip( padding );
+}
+
+@media screen and (max-width: 768px) {
+  #topNavMenu ul li {
+    float: none;
+    display: block;
+  }
+  #topNavMenu ul li a {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: 1px solid #fb998c;
+  }
+  #topNavMenu ul li a:after {
+    display: none;
+  }
+  #topNavMenu ul li a:before {
+    display: none;
+  }
+}
